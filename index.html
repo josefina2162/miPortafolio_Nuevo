@@ -14,6 +14,16 @@
 </head>
 <body>
 
+<!-- Menú Overlay (pegalo en body, por ejemplo justo después de cerrar .hero) -->
+<div id="menuOverlay" class="menu-overlay" aria-hidden="true">
+  <button class="btn-close" aria-label="Cerrar menú">&times;</button>
+  <nav class="menu-links" role="navigation" aria-label="Menú principal">
+    <a href="#acerca">Acerca de</a>
+    <a href="#trabajos">Trabajos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div>
+
   <!-- Sección Hero -->
   <section class="hero">
     <!-- Header con nombre + menú -->
@@ -34,50 +44,6 @@
         </div>
       </div>
     </div>
-
-<!-- 
-<div id="heroCarousel" class="carousel slide text-center" data-bs-ride="carousel" data-bs-interval="2500">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/img1.png" class="carousel-img" alt="Josefina 1">
-    </div>
-    <div class="carousel-item">
-      <img src="img/img2.png" class="carousel-img" alt="Josefina 2">
-    </div>
-    <div class="carousel-item">
-      <img src="img/img3.png" class="carousel-img" alt="Josefina 3">
-    </div>
-    <div class="carousel-item">
-      <img src="img/img4.png" class="carousel-img" alt="Josefina 4">
-    </div>
-    <div class="carousel-item">
-      <img src="img/img5.png" class="carousel-img" alt="Josefina 5">
-    </div>
-    <div class="carousel-item">
-      <img src="img/img6.png" class="carousel-img" alt="Josefina 6">
-    </div>
-  </div>
-
-
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-  </div>
-
-  
-  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Anterior</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Siguiente</span>
-  </button>
-</div> -->
 
 <!-- Imagen principal -->
 <div class="hero-image text-center my-5">
@@ -181,5 +147,42 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+ const overlay = document.getElementById('menuOverlay');
+  const toggleBtn = document.querySelector('.btn-menu');
+
+  function openMenu() {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('menu-open');
+  }
+
+  // Toggle
+  function toggleMenu() {
+    if (overlay.classList.contains('open')) closeMenu();
+    else openMenu();
+  }
+
+  // Listeners
+  if (toggleBtn) toggleBtn.addEventListener('click', toggleMenu);
+  const btnClose = overlay.querySelector('.btn-close');
+  if (btnClose) btnClose.addEventListener('click', closeMenu);
+
+  // cerrar al hacer click en link
+  overlay.querySelectorAll('.menu-links a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // cerrar con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+  });
+</script>
 </body>
 </html>

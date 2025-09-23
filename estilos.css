@@ -18,6 +18,60 @@ body {
   color: #f2f2f2;
 }
 
+/* Overlay del menú: cubre toda la ventana y siempre está por encima */
+.menu-overlay {
+  position: fixed;
+  inset: 0;                      /* top:0; right:0; bottom:0; left:0; */
+  width: 100vw;
+  height: 100vh;
+  background-color: #6471C0;
+  display: none;                 /* oculto por defecto */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2147483647 !important; /* muy alto para que tape TODO */
+}
+
+/* clase que muestra el overlay */
+.menu-overlay.open {
+  display: flex;
+}
+
+/* Botón de cerrar (X) - siempre en top-right del viewport */
+.menu-overlay .btn-close {
+  position: fixed;               /* fijado en viewport */
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  color: #E2E2FF;
+  cursor: pointer;
+  z-index: 2147483648 !important; /* encima incluso de overlay content */
+}
+
+/* Links centrados */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  z-index: 2147483647;
+}
+
+.menu-links a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #E2E2FF;
+}
+
+/* Evitar que la página se scrollee por detrás */
+body.menu-open {
+  overflow: hidden !important;
+}
+
 /* HERO (se comporta como sección normal: crece con contenido) */
 .hero {
   background: url("img/fondo-hero.svg") no-repeat center center;
@@ -106,7 +160,7 @@ body {
   text-transform: none; /* respeta el texto */
   font-size: 18px;
   border-radius: 0; /* cuadrado */
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 300;
   display: inline-flex;         /* flex para centrar el texto */
   align-items: center;          /* centra vertical */
@@ -132,7 +186,7 @@ body {
   text-transform: none; /* respeta el texto */
   font-size: 18px;
   border-radius: 0; /* cuadrado */
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 300;
   display: inline-flex;         /* flex para centrar el texto */
   align-items: center;          /* centra vertical */
@@ -158,7 +212,7 @@ body {
   text-transform: none; /* respeta el texto */
   font-size: 18px;
   border-radius: 0; /* cuadrado */
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 300;
   display: inline-flex;         /* flex para centrar el texto */
   align-items: center;          /* centra vertical */
@@ -184,7 +238,7 @@ body {
   text-transform: none; /* respeta el texto */
   font-size: 18px;
   border-radius: 0; /* cuadrado */
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 300;
   display: inline-flex;         /* flex para centrar el texto */
   align-items: center;          /* centra vertical */
@@ -210,7 +264,7 @@ body {
   text-transform: none; /* respeta el texto */
   font-size: 18px;
   border-radius: 0; /* cuadrado */
-  transition: 0.3s;
+  /* transition: 0.3s; */
   font-weight: 300;
   display: inline-flex;         /* flex para centrar el texto */
   align-items: center;          /* centra vertical */
@@ -218,6 +272,13 @@ body {
   margin-right: 5%;
 }
 
+.btn-Mostrar,
+.btn-Mostrar1,
+.btn-Mostrar2,
+.btn-Mostrar3,
+.btn-Mostrar4 {
+  transition: none !important;
+}
 
 /* Hover para un efecto sutil */
 /* .btn-Mostrar:hover {
