@@ -166,6 +166,58 @@ body {
   margin-right: 5%;
 }
 
+/* Fondo de la sección DiseñoUX/UI*/
+.seccion-svg3 {
+  background: url("img/fondoUX.svg") no-repeat center center;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* Botón personalizado */
+.btn-Mostrar3 {
+  width: 213px;       /* ancho fijo */
+  height: 46px;       /* alto fijo */
+  border: 2px solid #E2E2FF;
+  background: transparent;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none; /* respeta el texto */
+  font-size: 18px;
+  border-radius: 0; /* cuadrado */
+  transition: 0.3s;
+  font-weight: 300;
+  display: inline-flex;         /* flex para centrar el texto */
+  align-items: center;          /* centra vertical */
+  justify-content: center;      /* centra horizontal */
+  margin-right: 50%;
+}
+
+/* Fondo de la sección DiseñoUI*/
+.seccion-svg4 {
+  background-color: #3060AA;
+  padding-top: 120px;
+  padding-bottom: 150px;
+}
+
+/* Botón personalizado */
+.btn-Mostrar4 {
+  width: 213px;       /* ancho fijo */
+  height: 46px;       /* alto fijo */
+  border: 2px solid #E2E2FF;
+  background: transparent;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none; /* respeta el texto */
+  font-size: 18px;
+  border-radius: 0; /* cuadrado */
+  transition: 0.3s;
+  font-weight: 300;
+  display: inline-flex;         /* flex para centrar el texto */
+  align-items: center;          /* centra vertical */
+  justify-content: center;      /* centra horizontal */
+  margin-right: 5%;
+}
+
 
 /* Hover para un efecto sutil */
 /* .btn-Mostrar:hover {
