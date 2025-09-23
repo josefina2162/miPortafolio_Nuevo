@@ -1,0 +1,129 @@
+/* RESET / base limpia */
+* { box-sizing: border-box; }
+html, body {
+  height: auto !important;     /* que crezca con el contenido */
+  min-height: 100%;            /* aseguramos el largo */
+  overflow-x: hidden;          /* solo ocultamos el scroll horizontal */
+  overflow-y: auto !important; /* habilitamos el scroll vertical */
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo general (mantengo tu degradado) */
+body {
+  background: linear-gradient(180deg, #0d1c63 0%, #27408b 100%);
+  color: #f2f2f2;
+}
+
+/* HERO (se comporta como sección normal: crece con contenido) */
+.hero {
+  background: url("img/fondo-hero.svg") no-repeat center center;
+  background-size: cover;
+  display: block;     /* importante: NO flex que pueda apretar las cajas */
+  position: relative; /* por si tenés overlays en el futuro */
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Forzamos que los hijos directos del hero estén en flujo normal */
+.hero > * { position: static; }
+
+/* Header dentro de hero */
+.hero h1 {
+  color: #FFE385;
+  font-weight: 300;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Evito reglas peligrosas que tenías antes */
+.pt-3 { padding-top: 1rem !important; }
+
+/* Botón hamburguesa */
+.btn-menu svg { transition: 0.3s; }
+.btn-menu:hover svg { transform: scale(1.1); }
+
+/* Imagen fija en Hero (responsive, no recorta ni provoca overflow) */
+.hero-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* TEXTO */
+.hero-text {
+  width: 100%;
+  max-width: 1100px;   /* opcional: limita línea para mejor lectura */
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #E2E2FF;
+}
+
+/* Aseguramos que no haya overflow oculto en containers comunes */
+.container, .container-fluid, .row {
+  overflow: visible;
+}
+
+/* Indicadores / otros (si llegás a volver al carousel) */
+.carousel-indicators { z-index: 2; }
+
+
+/* Fondo de la sección BRANDING*/
+.seccion-svg {
+  background-color: #3060AA;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* Botón personalizado */
+.btn-Mostrar {
+  width: 213px;       /* ancho fijo */
+  height: 46px;       /* alto fijo */
+  border: 2px solid #E2E2FF;
+  background: transparent;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none; /* respeta el texto */
+  font-size: 18px;
+  border-radius: 0; /* cuadrado */
+  transition: 0.3s;
+  font-weight: 300;
+  display: inline-flex;         /* flex para centrar el texto */
+  align-items: center;          /* centra vertical */
+  justify-content: center;      /* centra horizontal */
+  margin-right: 3%;
+}
+
+/* Hover para un efecto sutil */
+.btn-Mostrar:hover {
+  background-color: rgba(226, 226, 255, 0.1);
+}
+/* Media queries (si necesitás ajustar la altura del hero para móviles) */
+@media (max-width: 576px) {
+  .hero { padding-top: 1rem; padding-bottom: 1.5rem; }
+  .hero-img { max-height: 380px; }
+}
+@media (min-width: 768px) {
+  .hero { padding-top: 2rem; padding-bottom: 3rem; }
+  .hero-img { max-height: 520px; }
+}
