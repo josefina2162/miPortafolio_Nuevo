@@ -114,6 +114,59 @@ body {
   margin-right: 3%;
 }
 
+/* Fondo de la sección tarjetasInteractivas*/
+.seccion-svg1 {
+  background-color: #E2E2FF;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* Botón personalizado */
+.btn-Mostrar1 {
+  width: 213px;       /* ancho fijo */
+  height: 46px;       /* alto fijo */
+  border: 2px solid #3060AA;
+  background: transparent;
+  color: #3060AA;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none; /* respeta el texto */
+  font-size: 18px;
+  border-radius: 0; /* cuadrado */
+  transition: 0.3s;
+  font-weight: 300;
+  display: inline-flex;         /* flex para centrar el texto */
+  align-items: center;          /* centra vertical */
+  justify-content: center;      /* centra horizontal */
+  margin-right: 50%;
+}
+
+/* Fondo de la sección tarjetasInteractivas*/
+.seccion-svg2 {
+  background-color: #E2E2FF;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* Botón personalizado */
+.btn-Mostrar2 {
+  width: 213px;       /* ancho fijo */
+  height: 46px;       /* alto fijo */
+  border: 2px solid #3060AA;
+  background: transparent;
+  color: #3060AA;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none; /* respeta el texto */
+  font-size: 18px;
+  border-radius: 0; /* cuadrado */
+  transition: 0.3s;
+  font-weight: 300;
+  display: inline-flex;         /* flex para centrar el texto */
+  align-items: center;          /* centra vertical */
+  justify-content: center;      /* centra horizontal */
+  margin-right: 5%;
+}
+
+
 /* Hover para un efecto sutil */
 /* .btn-Mostrar:hover {
   background-color: rgba(226, 226, 255, 0.1);
