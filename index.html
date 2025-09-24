@@ -40,13 +40,102 @@
 
 <div id="trabajos" class="section-content" style="display:none;">
       <h2>Trabajos</h2>
-      <p>Aquí van tus proyectos destacados...</p>
+       <div class="trabajos-lista">
+    <a href="https://tuvinculo1.com" target="_blank">
+      <img src="img/trabajos1.svg" alt="Trabajo 1" class="img-fluid">
+    </a>
+    <a href="https://tuvinculo2.com" target="_blank">
+      <img src="img/trabajos2.svg" alt="Trabajo 2" class="img-fluid">
+    </a>
+    <a href="https://tuvinculo3.com" target="_blank">
+      <img src="img/trabajos3.svg" alt="Trabajo 3" class="img-fluid">
+    </a>
+    <a href="https://tuvinculo4.com" target="_blank">
+      <img src="img/trabajos4.svg" alt="Trabajo 4" class="img-fluid">
+    </a>
+    <a href="https://tuvinculo5.com" target="_blank">
+      <img src="img/trabajos5.svg" alt="Trabajo 5" class="img-fluid">
+    </a>
+    <a href="https://tuvinculo6.com" target="_blank">
+      <img src="img/trabajos6.svg" alt="Trabajo 6" class="img-fluid">
+    </a>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-Mostrar">Más</button>
+  </div>
     </div>
 
-    <div id="contacto" class="section-content" style="display:none;">
-      <h2>Contacto</h2>
-      <p>Tu email, formulario o redes...</p>
+<div id="contacto" class="section-content" style="display:none;">
+  <h2>Contacto</h2>
+
+  <form id="contactForm" class="contact-form" novalidate>
+    <!-- Nombre -->
+    <div class="field">
+      <label for="name">Nombre *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <input id="name" name="name" type="text" required />
+      </div>
     </div>
+
+    <!-- Apellido -->
+    <div class="field">
+      <label for="lastname">Apellido *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <input id="lastname" name="lastname" type="text" required />
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="field">
+      <label for="email">Email *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <input id="email" name="email" type="email" required />
+      </div>
+    </div>
+
+    <!-- Teléfono -->
+    <div class="field">
+      <label for="phone">Teléfono *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <input id="phone" name="phone" type="tel" required />
+      </div>
+    </div>
+
+    <!-- Servicio -->
+    <div class="field">
+      <label for="service">Servicio *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Seleccionar servicio</option>
+          <option value="branding">Branding</option>
+          <option value="uxui">Diseño UX/UI</option>
+          <option value="web">Desarrollo Web</option>
+          <option value="content">Content Creator</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mensaje -->
+    <div class="field">
+      <label for="message">Mensaje *</label>
+      <div class="input-wrap">
+        <span class="icon">→</span>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-enviar">Enviar</button>
+    </div>
+  </form>
+</div>
   </div>
   </div>
 </div>

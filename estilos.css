@@ -111,6 +111,11 @@ body {
   display: none;
 }
 
+.section-content h2 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
 /* IMAGENES ACERCA DE SECCIÓN*/
 
 .acerca-imagenes {
@@ -125,9 +130,113 @@ body {
   height: auto;
 }
 
-.section-content h2 {
-  font-size: 24px;
-  margin-bottom: 1rem;
+/* IMAGENES TRABAJOS SECCIÓN*/
+
+.trabajos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.trabajos-lista img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.trabajos-lista img:hover {
+  transform: scale(1.02);
+}
+
+/* ---------- CONTACTO ---------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.contact-form label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #E2E2FF;
+  margin-bottom: 0.25rem;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E2E2FF;
+}
+
+.input-wrap .icon {
+  color: #E2E2FF;
+  margin-right: 0.5rem;
+  font-size: 14px;
+}
+
+/* Inputs */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #E2E2FF;
+  font-size: 16px;
+  padding: 0.4rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 1.5rem;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23E2E2FF' height='18' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 14px;
+}
+
+/* Textarea con renglones */
+.contact-form textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 120px;  /* 4 líneas visibles aprox */
+  line-height: 30px;  /* altura de cada renglón */
+  padding: 0;
+  border: none;
+  outline: none;
+  resize: vertical;   /* permite alargar con el mouse */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 29px,
+    #E2E2FF 30px   /* color de la línea */
+  );
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #E2E2FF;
+}
+
+/* Botón enviar */
+.btn-enviar {
+  width: 100%;
+  height: 46px;
+  border: none;
+  background-color: #E2E2FF;
+  color: #6471C0;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 /* Evitar que la página se scrollee por detrás */
