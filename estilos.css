@@ -239,6 +239,41 @@ body {
   cursor: pointer;
 }
 
+/* LINKS DE CONTACTO */
+.contact-links {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 8%; /* separación entre los links */ 
+}
+
+.contact-links a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 18px;
+  color: #E2E2FF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: #FFD700; /* opcional: dorado al hover */
+}
+
+.contact-links2 {
+  display: flex;
+  justify-content: left;
+}
+
+.contact-links2 a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 18px;
+  color: #E2E2FF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 /* Evitar que la página se scrollee por detrás */
 body.menu-open {
   overflow: hidden !important;
@@ -246,15 +281,25 @@ body.menu-open {
 
 /* HERO (se comporta como sección normal: crece con contenido) */
 .hero {
-  background: url("img/fondo-hero.svg") no-repeat center center;
+  background: linear-gradient(135deg, #132060, #3060AA, #919EF4);
   background-size: cover;
-  display: block;     /* importante: NO flex que pueda apretar las cajas */
-  position: relative; /* por si tenés overlays en el futuro */
+  display: block; /* importante: NO flex que pueda apretar las cajas */
+  position: relative; /* necesario para el ::after */
   height: auto;
   min-height: 0;
   overflow: visible;
   padding-top: 1.5rem;
   padding-bottom: 2.5rem;
+}
+
+/* Overlay de ruido */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='8'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.15; /* controla la intensidad */
+  pointer-events: none; /* para que no bloquee clicks */
 }
 
 /* Forzamos que los hijos directos del hero estén en flujo normal */
@@ -298,7 +343,9 @@ body.menu-open {
 .hero-text {
   width: 100%;
   max-width: 1100px;   /* opcional: limita línea para mejor lectura */
-  margin: 0 auto;
+  margin: auto;
+  margin-left: 2%;
+  margin-right: 2%;
   padding: 0 1rem;
   font-size: 18px;
   line-height: 1.7;
