@@ -14,14 +14,41 @@
 </head>
 <body>
 
-<!-- Menú Overlay (pegalo en body, por ejemplo justo después de cerrar .hero) -->
 <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
   <button class="btn-close" aria-label="Cerrar menú">&times;</button>
-  <nav class="menu-links" role="navigation" aria-label="Menú principal">
-    <a href="#acerca">Acerca de</a>
-    <a href="#trabajos">Trabajos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+
+<!-- Menú principal -->
+<div class="menu-main">
+  <ul class="menu-list">
+    <li><button class="menu-link" data-section="acerca">Acerca de</button></li>
+    <li><button class="menu-link" data-section="trabajos">Trabajos</button></li>
+    <li><button class="menu-link" data-section="contacto">Contacto</button></li>
+  </ul>
+</div>
+
+<!-- Contenido dinámico -->
+<div class="menu-content">
+  <button class="menu-back">← Volver</button>
+
+  <div id="acerca" class="section-content">
+    <div class="acerca-imagenes">
+    <img src="img/acercade1.svg" alt="Sobre mí parte 1" class="img-fluid">
+    <img src="img/acercade2.svg" alt="Sobre mí parte 2" class="img-fluid">
+    <img src="img/acercade3.svg" alt="Sobre mí parte 3" class="img-fluid">
+  </div>
+  </div>
+
+<div id="trabajos" class="section-content" style="display:none;">
+      <h2>Trabajos</h2>
+      <p>Aquí van tus proyectos destacados...</p>
+    </div>
+
+    <div id="contacto" class="section-content" style="display:none;">
+      <h2>Contacto</h2>
+      <p>Tu email, formulario o redes...</p>
+    </div>
+  </div>
+  </div>
 </div>
 
   <!-- Sección Hero -->
@@ -174,15 +201,50 @@
   const btnClose = overlay.querySelector('.btn-close');
   if (btnClose) btnClose.addEventListener('click', closeMenu);
 
-  // cerrar al hacer click en link
-  overlay.querySelectorAll('.menu-links a').forEach(a => {
-    a.addEventListener('click', closeMenu);
-  });
+// NUEVO MANEJO DEL MENÚ
+const menuMain = overlay.querySelector('.menu-main');
+const menuContent = overlay.querySelector('.menu-content');
+const menuBack = overlay.querySelector('.menu-back');
+const menuButtons = overlay.querySelectorAll('.menu-link');
+const sections = overlay.querySelectorAll('.section-content');
 
-  // cerrar con ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+// Mostrar sección
+function showSection(id) {
+  menuMain.style.display = 'none';
+  menuContent.style.display = 'block';
+  menuBack.style.display = 'block';
+  sections.forEach(sec => sec.style.display = 'none');
+  overlay.querySelector('#' + id).style.display = 'block';
+}
+
+// Volver al menú principal
+menuBack.addEventListener('click', () => {
+  menuMain.style.display = 'block';
+  menuContent.style.display = 'none';
+  menuBack.style.display = 'none';
+  sections.forEach(sec => sec.style.display = 'none');
+});
+
+// Click en botones del menú
+menuButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sectionId = btn.dataset.section;
+    showSection(sectionId);
   });
+});
+
+// Ajusto el closeMenu para resetear bien
+function closeMenu() {
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('menu-open');
+
+  // Reset
+  menuMain.style.display = 'block';
+  menuContent.style.display = 'none';
+  menuBack.style.display = 'none';
+  sections.forEach(sec => sec.style.display = 'none');
+}
 </script>
 </body>
 </html>

@@ -67,6 +67,69 @@ body {
   color: #E2E2FF;
 }
 
+.menu-content {
+  width: 100%;
+  padding: 2rem;
+  display: none; /* Oculto al inicio */
+  overflow-y: auto;
+}
+
+.section-content {
+  display: none;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #E2E2FF;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.menu-link {
+  background: none;
+  border: none;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu-back {
+  background: none;
+  border: none;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* IMAGENES ACERCA DE SECCIÓN*/
+
+.acerca-imagenes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.acerca-imagenes img {
+  max-width: 90%;
+  height: auto;
+}
+
+.section-content h2 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
 /* Evitar que la página se scrollee por detrás */
 body.menu-open {
   overflow: hidden !important;
