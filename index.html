@@ -1,198 +1,294 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio - Josefina Zappettini</title>
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Estilos -->
-   <link rel="stylesheet" href="estilos.css" />
-  
+
+  <!-- Estilos (reemplazar estilos.css) -->
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
 
-<div id="menuOverlay" class="menu-overlay" aria-hidden="true">
+<!-- ======================
+     MENU MOBILE (overlay)
+     ====================== -->
+<div id="menuOverlay" class="menu-overlay" aria-hidden="true" role="dialog" aria-label="Menú principal">
   <button class="btn-close" aria-label="Cerrar menú">&times;</button>
 
-<!-- Menú principal -->
-<div class="menu-main">
-  <ul class="menu-list">
-    <li><button class="menu-link" data-section="acerca">Acerca de</button></li>
-    <li><button class="menu-link" data-section="trabajos">Trabajos</button></li>
-    <li><button class="menu-link" data-section="contacto">Contacto</button></li>
-  </ul>
+  <!-- Vista principal del menú -->
+  <div class="menu-main" aria-hidden="false">
+    <ul class="menu-list">
+      <li><button class="menu-link" data-section="acerca">Acerca de</button></li>
+      <li><button class="menu-link" data-section="trabajos">Trabajos</button></li>
+      <li><button class="menu-link" data-section="contacto">Contacto</button></li>
+    </ul>
+  </div>
+
+  <!-- Contenido que aparece al seleccionar un item -->
+  <div class="menu-content" aria-hidden="true">
+    <button class="menu-back" aria-label="Volver">← Volver</button>
+
+    <div id="acerca" class="section-content">
+      <div class="acerca-imagenes">
+        <img src="img/acercade1.svg" alt="Sobre mí parte 1" class="img-fluid">
+        <img src="img/acercade2.svg" alt="Sobre mí parte 2" class="img-fluid">
+        <img src="img/acercade3.svg" alt="Sobre mí parte 3" class="img-fluid">
+      </div>
+    </div>
+
+    <div id="trabajos" class="section-content">
+      <h2>Trabajos</h2>
+      <div class="trabajos-lista">
+        <a href="#" target="_blank"><img src="img/trabajos1.svg" alt="Trabajo 1" class="img-fluid"></a>
+        <a href="#" target="_blank"><img src="img/trabajos2.svg" alt="Trabajo 2" class="img-fluid"></a>
+        <a href="#" target="_blank"><img src="img/trabajos3.svg" alt="Trabajo 3" class="img-fluid"></a>
+        <a href="#" target="_blank"><img src="img/trabajos4.svg" alt="Trabajo 4" class="img-fluid"></a>
+        <a href="#" target="_blank"><img src="img/trabajos5.svg" alt="Trabajo 5" class="img-fluid"></a>
+        <a href="#" target="_blank"><img src="img/trabajos6.svg" alt="Trabajo 6" class="img-fluid"></a>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-Mostrar">Más</button>
+      </div>
+    </div>
+
+    <div id="contacto" class="section-content">
+      <h2>Contacto</h2>
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Nombre *</label>
+          <div class="input-wrap"><span class="icon">→</span><input id="name" name="name" type="text" required></div>
+        </div>
+        <div class="field">
+          <label for="lastname">Apellido *</label>
+          <div class="input-wrap"><span class="icon">→</span><input id="lastname" name="lastname" type="text" required></div>
+        </div>
+        <div class="field">
+          <label for="email">Email *</label>
+          <div class="input-wrap"><span class="icon">→</span><input id="email" name="email" type="email" required></div>
+        </div>
+        <div class="field">
+          <label for="phone">Teléfono *</label>
+          <div class="input-wrap"><span class="icon">→</span><input id="phone" name="phone" type="tel" required></div>
+        </div>
+        <div class="field">
+          <label for="service">Servicio *</label>
+          <div class="input-wrap">
+            <span class="icon">→</span>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Seleccionar servicio</option>
+              <option value="branding">Branding</option>
+              <option value="uxui">Diseño UX/UI</option>
+              <option value="web">Desarrollo Web</option>
+              <option value="content">Content Creator</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Mensaje *</label>
+          <div class="input-wrap"><span class="icon">→</span><textarea id="message" name="message" rows="4" required></textarea></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-enviar">Enviar</button>
+        </div>
+
+        <div class="contact-links">
+          <a href="#" target="_blank">LinkedIn</a>
+          <a href="mailto:tuemail@gmail.com">Gmail</a>
+          <a href="#" target="_blank">Behance</a>
+          <a href="#" target="_blank">Instagram</a>
+        </div>
+
+        <div class="contact-links2">
+          <a href="#" target="_blank">La Plata, Buenos Aires, Argentina</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
 </div>
 
-<!-- Contenido dinámico -->
-<div class="menu-content">
-  <button class="menu-back">← Volver</button>
+<!-- ======================
+     NAV VERTICAL DESKTOP
+     ====================== -->
+<nav class="nav-vertical" aria-label="Navegación principal desktop">
+  <ul>
+    <li><a href="#" data-section="acerca">Acerca de</a></li>
+    <li><a href="#" data-section="trabajos">Trabajos</a></li>
+    <li><a href="#" data-section="contacto">Contacto</a></li>
+  </ul>
+</nav>
 
-  <div id="acerca" class="section-content">
-    <div class="acerca-imagenes">
-    <img src="img/acercade1.svg" alt="Sobre mí parte 1" class="img-fluid">
-    <img src="img/acercade2.svg" alt="Sobre mí parte 2" class="img-fluid">
-    <img src="img/acercade3.svg" alt="Sobre mí parte 3" class="img-fluid">
-  </div>
+<!-- ======================
+     OVERLAY LATERAL DESKTOP
+     ====================== -->
+<div id="deskOverlay" class="desk-overlay" aria-hidden="true" role="dialog" aria-label="Panel Acerca/Trabajos/Contacto">
+  <button class="btn-close-desk" aria-label="Cerrar">&times;</button>
+  <div class="desk-overlay-content">
+    <div id="desk-acerca" class="desk-section">
+      <div class="acerca-imgs">
+        <img src="img/acercadeDesk1.svg" alt="Texto acerca 1" class="img-fluid">
+        <img src="img/acercadeDesk2.svg" alt="Texto acerca 2" class="img-fluid">
+        <img src="img/acercadeDesk3.svg" alt="Texto acerca 3" class="img-fluid">
+      </div>
+    </div>
+  
+  <div id="desk-trabajos" class="desk-section">
+  <h2>Trabajos</h2>
+  <div class="container-fluid desk-trabajos">
+    <div class="row g-4">
+      <!-- Fila 1 -->
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk1.svg" alt="Trabajo 1" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk2.svg" alt="Trabajo 2" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk3.svg" alt="Trabajo 3" class="img-fluid">
+        </a>
+      </div>
+      <!-- Fila 2 -->
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk4.svg" alt="Trabajo 4" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk5.svg" alt="Trabajo 5" class="img-fluid">
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" target="_blank">
+          <img src="img/trabajosDesk6.svg" alt="Trabajo 6" class="img-fluid">
+        </a>
+      </div>
+    </div>
   </div>
 
-<div id="trabajos" class="section-content" style="display:none;">
-      <h2>Trabajos</h2>
-       <div class="trabajos-lista">
-    <a href="https://tuvinculo1.com" target="_blank">
-      <img src="img/trabajos1.svg" alt="Trabajo 1" class="img-fluid">
-    </a>
-    <a href="https://tuvinculo2.com" target="_blank">
-      <img src="img/trabajos2.svg" alt="Trabajo 2" class="img-fluid">
-    </a>
-    <a href="https://tuvinculo3.com" target="_blank">
-      <img src="img/trabajos3.svg" alt="Trabajo 3" class="img-fluid">
-    </a>
-    <a href="https://tuvinculo4.com" target="_blank">
-      <img src="img/trabajos4.svg" alt="Trabajo 4" class="img-fluid">
-    </a>
-    <a href="https://tuvinculo5.com" target="_blank">
-      <img src="img/trabajos5.svg" alt="Trabajo 5" class="img-fluid">
-    </a>
-    <a href="https://tuvinculo6.com" target="_blank">
-      <img src="img/trabajos6.svg" alt="Trabajo 6" class="img-fluid">
-    </a>
-  </div>
-
+  <!-- Botón al final -->
   <div class="text-center mt-4">
-    <button class="btn btn-Mostrar">Más</button>
+    <button class="btn btn-MostrarDesk">Más</button>
   </div>
-    </div>
-
-<div id="contacto" class="section-content" style="display:none;">
-  <h2>Contacto</h2>
-
-  <form id="contactForm" class="contact-form" novalidate>
-    <!-- Nombre -->
-    <div class="field">
-      <label for="name">Nombre *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <input id="name" name="name" type="text" required />
+</div>
+   <div id="desk-contacto" class="desk-section">
+  <h2>Contáctame</h2>
+  <form class="contact-form">
+    <!-- Fila 1: Nombre y Apellido -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">Nombre *</label>
+        <div class="input-line">
+          <span class="arrow">→</span>
+          <input type="text" id="nombre">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido *</label>
+        <div class="input-line">
+          <span class="arrow">→</span>
+          <input type="text" id="apellido">
+        </div>
       </div>
     </div>
 
-    <!-- Apellido -->
-    <div class="field">
-      <label for="lastname">Apellido *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <input id="lastname" name="lastname" type="text" required />
+    <!-- Fila 2: Email y Teléfono -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <div class="input-line">
+          <span class="arrow">→</span>
+          <input type="email" id="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono *</label>
+        <div class="input-line">
+          <span class="arrow">→</span>
+          <input type="tel" id="telefono">
+        </div>
       </div>
     </div>
 
-    <!-- Email -->
-    <div class="field">
-      <label for="email">Email *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <input id="email" name="email" type="email" required />
-      </div>
-    </div>
-
-    <!-- Teléfono -->
-    <div class="field">
-      <label for="phone">Teléfono *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <input id="phone" name="phone" type="tel" required />
-      </div>
-    </div>
-
-    <!-- Servicio -->
-    <div class="field">
-      <label for="service">Servicio *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <select id="service" name="service" required>
-          <option value="" disabled selected>Seleccionar servicio</option>
+    <!-- Fila 3: Servicio -->
+    <div class="form-group full">
+      <label for="servicio">Servicio *</label>
+      <div class="input-line">
+        <span class="arrow">→</span>
+        <select id="servicio">
+          <option selected disabled>Seleccionar servicio</option>
           <option value="branding">Branding</option>
-          <option value="uxui">Diseño UX/UI</option>
-          <option value="web">Desarrollo Web</option>
+          <option value="uxui">UX/UI</option>
           <option value="content">Content Creator</option>
+          <option value="otros">Otros</option>
         </select>
       </div>
     </div>
 
-    <!-- Mensaje -->
-    <div class="field">
-      <label for="message">Mensaje *</label>
-      <div class="input-wrap">
-        <span class="icon">→</span>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-    </div>
+    <!-- Fila 4: Mensaje -->
+<div class="form-group full">
+  <label for="mensaje">Mensaje *</label>
+  <div class="input-line textarea-line">
+    <span class="arrow">→</span>
+    <textarea id="mensaje" rows="3"></textarea>
+  </div>
+</div>
 
     <!-- Botón -->
-    <div class="form-actions">
+    <div class="form-group full text-center">
       <button type="submit" class="btn btn-enviar">Enviar</button>
     </div>
-
-  <div class="contact-links">
-  <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-  <a href="mailto:tuemail@gmail.com">Gmail</a>
-  <a href="https://behance.net/" target="_blank">Behance</a>
-  <a href="https://instagram.com/" target="_blank">Instagram</a>
-</div>
-
-<div class="contact-links2">
-  <a href="https://maps.app.goo.gl/HvvZPQL28F2tga6S9" target="_blank">La Plata, Buenos Aires, Argentina</a>
-</div>
-
   </form>
 </div>
   </div>
-  </div>
 </div>
 
-  <!-- Sección Hero -->
-  <section class="hero">
-    <!-- Header con nombre + menú -->
-    <div class="container-fluid px-4 pt-3">
-      <div class="row">
-        <!-- Nombre -->
-        <div class="col-6 d-flex align-items-center">
-          <h1 class="mb-0">Josefina Zappettini</h1>
-        </div>
-        <!-- Menú hamburguesa -->
-        <div class="col-6 d-flex justify-content-end">
-          <button class="btn btn-menu p-0 border-0 bg-transparent">
-            <!-- Ícono hamburguesa -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFD700" viewBox="0 0 16 16">
-              <path d="M2 12h12v1H2zm0-5h12v1H2zm0-5h12v1H2z"/>
-            </svg>
-          </button>
-        </div>
+<!-- ======================
+     HERO + CONTENIDO (MOBILE)
+     ====================== -->
+<section class="hero">
+  <div class="container-fluid px-4 pt-3">
+    <div class="row">
+      <div class="col-6 d-flex align-items-center">
+        <h1 class="mb-0">Josefina Zappettini</h1>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <button class="btn btn-menu p-0 border-0 bg-transparent" aria-label="Abrir menú">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" fill="#FFD700">
+            <path d="M2 12h12v1H2zm0-5h12v1H2zm0-5h12v1H2z"/>
+          </svg>
+        </button>
       </div>
     </div>
+  </div>
 
-<!-- Imagen principal -->
-<div class="hero-image text-center mt-5 mb-3">
-  <img src="img/img1.svg" class="hero-img" alt="Josefina">
-</div>
+  <div class="hero-image text-center mt-5 mb-3">
+    <img src="img/img1.svg" class="hero-img" alt="Josefina">
+  </div>
 
-    <!-- Texto de presentación -->
-    <div class="container-fluid px-4 py-4 hero-text">
-      <p>
-        Soy Josefina, diseñadora multimedial enfocada en UX/UI, investigación y branding. Curiosa, impulsiva (¡Aries al fin!) y siempre en movimiento, disfruto los retos, las ideas nuevas y las soluciones eficientes.
-      </p>
-      <p>
-        Diseño pensando en las personas: qué necesitan, cómo se sienten y cómo simplificarles la experiencia. Para mí, diseñar es entender el mundo y volverlo más habitable.
-      </p>
-      <p>
-        Soy inquieta, multitasking, sociable y comprometida. Así diseño: con intuición, energía, estrategia y muchas ganas de hacer que las cosas funcionen y se sientan bien.
-      </p>
-    </div>
-  </section>
+  <div class="container-fluid px-4 py-4 hero-text">
+    <p>Soy Josefina, diseñadora multimedial enfocada en UX/UI, investigación y branding. Curiosa, impulsiva (¡Aries al fin!) y siempre en movimiento, disfruto los retos, las ideas nuevas y las soluciones eficientes.</p>
+    <p>Diseño pensando en las personas: qué necesitan, cómo se sienten y cómo simplificarles la experiencia. Para mí, diseñar es entender el mundo y volverlo más habitable.</p>
+    <p>Soy inquieta, multitasking, sociable y comprometida. Así diseño: con intuición, energía, estrategia y muchas ganas de hacer que las cosas funcionen y se sientan bien.</p>
+  </div>
+</section>
 
-<!-- Nueva sección BRANDING -->
+<!-- GRID SECCIÓNES SVG -->
+<div class="grid-secciones">
+<!-- Nueva sección BRANDING MOBILE -->
 <section class="seccion-svg">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -202,14 +298,22 @@
 
         <!-- Botón alineado a la derecha, al inicio de la imagen -->
         <div class="text-end mt-3">
-          <button class="btn btn-Mostrar"> Mostrar </button>
+          <a
+  href="trabajos.html?section=branding"
+  class="btn btn-Mostrar"
+  role="button"
+  aria-label="Abrir trabajos - Branding"
+  id="open-trabajos-branding"
+>
+  Mostrar
+</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Nueva sección TarjetasInteractivas -->
+<!-- Nueva sección TarjetasInteractivas MOBILE-->
 <section class="seccion-svg1">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -217,15 +321,23 @@
       <div class="col-11 text-center position-relative">
         <img src="img/tarjetasInteractivas.svg" alt="Imagen SVG" class="img-fluid">
         <!-- Botón alineado a la derecha, al inicio de la imagen -->
-        <div class="text-end mt-3">
-          <button class="btn btn-Mostrar1"> Mostrar </button>
-        </div>
+       <div class="text-end mt-3">
+<a
+  href="trabajos.html?section=tarjetas"
+  class="btn btn-Mostrar1"
+  role="button"
+  aria-label="Abrir trabajos - Tarjetas Interactivas"
+  id="open-trabajos-tarjetas"
+>
+  Mostrar
+</a>
+</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Nueva sección ContentCreator -->
+<!-- Nueva sección ContentCreator MOBILE-->
 <section class="seccion-svg2">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -241,7 +353,7 @@
   </div>
 </section>
 
-<!-- Nueva sección DiseñoUX/UI -->
+<!-- Nueva sección DiseñoUX/UI MOBILE-->
 <section class="seccion-svg3">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -257,7 +369,7 @@
   </div>
 </section>
 
-<!-- Nueva sección UI -->
+<!-- Nueva sección UI MOBILE-->
 <section class="seccion-svg4">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -273,79 +385,135 @@
   </div>
 </section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
- const overlay = document.getElementById('menuOverlay');
-  const toggleBtn = document.querySelector('.btn-menu');
+</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  function openMenu() {
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden','false');
-    document.body.classList.add('menu-open');
-  }
+<!-- Script: mobile + desktop (reemplaza tu script actual por este) -->
+<script>
+/* ----------------- MOBILE ----------------- */
+const overlay = document.getElementById('menuOverlay');
+const toggleBtn = document.querySelector('.btn-menu');
 
-  function closeMenu() {
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden','true');
-    document.body.classList.remove('menu-open');
-  }
+// elementos internos del overlay mobile
+const menuMain = overlay ? overlay.querySelector('.menu-main') : null;
+const menuContent = overlay ? overlay.querySelector('.menu-content') : null;
+const menuBack = overlay ? overlay.querySelector('.menu-back') : null;
+const menuButtons = overlay ? overlay.querySelectorAll('.menu-link') : [];
+const sections = overlay ? overlay.querySelectorAll('.section-content') : [];
 
-  // Toggle
-  function toggleMenu() {
-    if (overlay.classList.contains('open')) closeMenu();
-    else openMenu();
-  }
-
-  // Listeners
-  if (toggleBtn) toggleBtn.addEventListener('click', toggleMenu);
-  const btnClose = overlay.querySelector('.btn-close');
-  if (btnClose) btnClose.addEventListener('click', closeMenu);
-
-// NUEVO MANEJO DEL MENÚ
-const menuMain = overlay.querySelector('.menu-main');
-const menuContent = overlay.querySelector('.menu-content');
-const menuBack = overlay.querySelector('.menu-back');
-const menuButtons = overlay.querySelectorAll('.menu-link');
-const sections = overlay.querySelectorAll('.section-content');
-
-// Mostrar sección
-function showSection(id) {
-  menuMain.style.display = 'none';
-  menuContent.style.display = 'block';
-  menuBack.style.display = 'block';
-  sections.forEach(sec => sec.style.display = 'none');
-  overlay.querySelector('#' + id).style.display = 'block';
+// abrir menú mobile
+function openMenu() {
+  if (!overlay) return;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('menu-open');
 }
 
-// Volver al menú principal
-menuBack.addEventListener('click', () => {
-  menuMain.style.display = 'block';
-  menuContent.style.display = 'none';
-  menuBack.style.display = 'none';
-  sections.forEach(sec => sec.style.display = 'none');
-});
-
-// Click en botones del menú
-menuButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const sectionId = btn.dataset.section;
-    showSection(sectionId);
-  });
-});
-
-// Ajusto el closeMenu para resetear bien
+// cerrar menú mobile (y reset)
 function closeMenu() {
+  if (!overlay) return;
   overlay.classList.remove('open');
   overlay.setAttribute('aria-hidden','true');
   document.body.classList.remove('menu-open');
 
-  // Reset
-  menuMain.style.display = 'block';
-  menuContent.style.display = 'none';
-  menuBack.style.display = 'none';
+  if (menuMain) menuMain.style.display = 'block';
+  if (menuContent) menuContent.style.display = 'none';
+  if (menuBack) menuBack.style.display = 'none';
   sections.forEach(sec => sec.style.display = 'none');
 }
+
+// toggle hamburguesa
+if (toggleBtn) toggleBtn.addEventListener('click', () => {
+  if (!overlay) return;
+  if (overlay.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+
+// botón cerrar mobile
+if (overlay) {
+  const btnCloseMobile = overlay.querySelector('.btn-close');
+  if (btnCloseMobile) btnCloseMobile.addEventListener('click', closeMenu);
+}
+
+// manejar links mobile (mostrar contenido dentro del overlay)
+menuButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sectionId = btn.dataset.section;
+    if (!sectionId) return;
+    if (!menuMain || !menuContent || !menuBack) return;
+
+    menuMain.style.display = 'none';
+    menuContent.style.display = 'block';
+    menuBack.style.display = 'block';
+
+    sections.forEach(sec => sec.style.display = 'none');
+    const target = overlay.querySelector('#' + sectionId);
+    if (target) target.style.display = 'block';
+  });
+});
+
+// botón volver
+if (menuBack) {
+  menuBack.addEventListener('click', () => {
+    if (!menuMain || !menuContent || !menuBack) return;
+    menuMain.style.display = 'block';
+    menuContent.style.display = 'none';
+    menuBack.style.display = 'none';
+    sections.forEach(sec => sec.style.display = 'none');
+  });
+}
+
+/* cerrar con ESC en mobile */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (overlay && overlay.classList.contains('open')) closeMenu();
+  }
+});
+
+/* ----------------- DESKTOP ----------------- */
+const deskOverlay = document.getElementById('deskOverlay');
+const deskLinks = document.querySelectorAll('.nav-vertical a');
+const deskSections = document.querySelectorAll('.desk-section');
+const deskClose = deskOverlay ? deskOverlay.querySelector('.btn-close-desk') : null;
+
+deskLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = link.dataset.section;
+    if (!deskOverlay) return;
+
+    // abrir panel desktop
+    deskOverlay.classList.add('open');
+    deskOverlay.setAttribute('aria-hidden','false');
+    document.body.classList.add('menu-open'); // bloquea scroll del body
+
+    // mostrar la sección correspondiente
+    deskSections.forEach(sec => sec.classList.remove('active'));
+    const target = document.getElementById('desk-' + section);
+    if (target) target.classList.add('active');
+  });
+});
+
+// cerrar overlay desktop
+if (deskClose) {
+  deskClose.addEventListener('click', () => {
+    deskOverlay.classList.remove('open');
+    deskOverlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('menu-open');
+    deskSections.forEach(sec => sec.classList.remove('active'));
+  });
+}
+
+// cerrar con ESC desktop
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && deskOverlay && deskOverlay.classList.contains('open')) {
+    deskOverlay.classList.remove('open');
+    deskOverlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('menu-open');
+    deskSections.forEach(sec => sec.classList.remove('active'));
+  }
+});
 </script>
 </body>
 </html>

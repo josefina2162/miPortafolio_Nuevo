@@ -1,0 +1,558 @@
+/* RESET / base limpia */
+* { box-sizing: border-box; }
+html, body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo general */
+body {
+  background: #919EF4;
+  color:#E2E2FF;
+}
+
+/* ---------------------
+   MENU MOBILE (overlay)
+   --------------------- */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #6471C0;
+  display: none;               /* oculto por defecto */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2147483647;
+  padding: 2rem;
+}
+
+.menu-overlay.open { display: flex; }
+
+.menu-overlay .btn-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  color: #E2E2FF;
+  cursor: pointer;
+  z-index: 2147483648;
+}
+
+.menu-main { width: 100%; }
+.menu-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+.menu-link { background: none; border: none; color: #E2E2FF; font-size: 28px; cursor: pointer; }
+
+.menu-content { width: 100%; padding: 1rem 0; display: none; overflow-y: auto; }
+.menu-back { display: none; background: none; border: none; color: #E2E2FF; font-size: 16px; margin-bottom: 1rem; cursor: pointer; }
+
+.section-content { display: none; color: #E2E2FF; line-height: 1.6; }
+.section-content img { max-width: 100%; height: auto; }
+
+/* IMAGENES ACERCA DE SECCIÓN*/
+
+.acerca-imagenes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.acerca-imagenes img {
+  max-width: 90%;
+  height: auto;
+}
+
+
+/* IMAGENES TRABAJOS SECCIÓN*/
+
+.trabajos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.trabajos-lista img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.trabajos-lista img:hover {
+  transform: scale(1.02);
+}
+
+
+/* CONTACTO */
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 420px; }
+.contact-form label { color: #E2E2FF; font-size: 16px; margin-bottom: 0.25rem; }
+.input-wrap { display: flex; align-items: center; border-bottom: 1px solid #E2E2FF; }
+.input-wrap .icon { color: #E2E2FF; margin-right: 0.5rem; font-size: 14px; }
+.contact-form input, .contact-form select, .contact-form textarea { flex:1; background: transparent; border:none; outline:none; color:#E2E2FF; font-size:16px; padding:0.4rem 0; font-family:'Poppins',sans-serif; }
+.contact-form select { appearance:none; background-image: url("data:image/svg+xml;utf8,<svg fill='%23E2E2FF' height='18' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l4 4 4-4z'/></svg>"); background-repeat:no-repeat; background-position:right center; background-size:14px; padding-right:1.5rem; }
+.contact-form textarea { min-height:120px; line-height:30px; padding:0; resize:vertical; background: repeating-linear-gradient(to bottom, transparent 0, transparent 29px, #E2E2FF 30px); color:#E2E2FF; }
+
+/* botones */
+.btn-enviar { width:100%; height:46px; border:none; background:#E2E2FF; color:#6471C0; font-size:16px; font-family:'Poppins',sans-serif; font-weight:300; cursor:pointer; }
+
+/* links de contacto */
+.contact-links { margin-top:1.5rem; display:flex; justify-content:center; gap:24px; }
+.contact-links a, .contact-links2 a { color:#E2E2FF; text-decoration:none; font-size:18px; font-weight:300; }
+
+/* ---------------------
+   HERO
+   --------------------- */
+.hero {
+  position: relative;
+  background-size: cover;
+  display: block;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  overflow: visible;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='8'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hero h1 { 
+  color:#E2E2FF; 
+  font-weight:100; 
+  font-size:28px; 
+  margin:5%; 
+} 
+
+/* barra de botones (scroll horizontal) */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 6px 10px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  margin: 5%;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+
+/* botón base */
+.filter-btn {
+  flex: 0 0 auto;
+  border: 2px solid #E2E2FF;
+  background: #E2E2FF;      /* inactivo */
+  color: #6471C0;           /* tipografía inactivo */
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  border-radius: 5px;
+}
+
+/* estado activo */
+.filter-btn.active {
+  background: transparent;   /* activo */
+  color: #E2E2FF;
+  border-color: #E2E2FF;
+}
+
+/* contenidos */
+.carousel-content { display: none; }
+.carousel-content.active { display: block; }
+
+/* CARDS MODIFICACIONES */
+
+/* Cards personalizadas para trabajos */
+.card {
+  background: transparent;            /* transparente */
+  border: none;                       /* sin borde */
+  font-family: 'Poppins', sans-serif; /* tipografía */
+  font-weight: 400;                   /* regular */
+  color: #E2E2FF;                     /* color de texto */
+  text-align: center;                 /* opcional, centra texto */
+}
+
+.card .card-body {
+  padding: 1rem 0.5rem; /* un poco de aire, podés ajustar */
+}
+
+.card .card-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #E2E2FF;
+}
+
+.card .card-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #E2E2FF;
+}
+
+/* Asegura que las imágenes no tengan borde raro */
+.card img {
+  border-radius: 8px; /* opcional, para esquinas suaves */
+}
+
+.carousel-inner {
+  overflow: hidden; /* asegura que los slides fuera de vista no desborden */
+}
+
+.carousel-item {
+  position: relative;
+  min-height: 360px; /* ajustá según la altura deseada */
+  /* NOTA: NO poner `display` aquí. Bootstrap establece display:none/block para ocultar slides */
+}
+
+.carousel-item .card {
+  width: 18rem;       /* ancho consistente de la card */
+  margin: 0 auto;     /* centrado horizontal dentro del slide */
+}
+
+.carousel-item .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* 
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 360px; 
+}
+
+
+.carousel-item .card {
+  width: 18rem;       
+  margin: 0 auto;     
+}
+
+
+.carousel-item .card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+} */
+
+
+/* ---------------------
+   NAV VERTICAL / DESKTOP
+   --------------------- */
+:root {
+  --nav-width: 84px;
+  --nav-bg: #6471C0;
+  --nav-link-color: #E2E2FF;
+  --nav-link-hover: #FFE385;
+}
+
+.grid-secciones {
+  display: block;
+}
+
+.nav-vertical { display:none; } /* oculto por defecto (mobile) */
+
+@media (min-width: 992px) {
+  /* espacio para que no quede contenido debajo de la barra */
+  body { padding-right: var(--nav-width); box-sizing: border-box; }
+
+  .btn-menu { display:none !important; }
+  .nav-vertical {
+    display:flex;
+    position: fixed;
+    top:0; right:0;
+    width: var(--nav-width);
+    height:100vh;
+    background: var(--nav-bg);
+    z-index: 9999;
+    align-items:center; justify-content:center;
+  }
+
+  .nav-vertical ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5.25rem; align-items:center; }
+  .nav-vertical a { color: var(--nav-link-color); text-decoration:none; font-weight:300; font-size:22px; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(360deg); letter-spacing:2px; transition: color 0.15s ease; }
+  .nav-vertical a:hover, .nav-vertical a:focus { color: var(--nav-link-hover); }
+
+  /* Overlay lateral (desktop) */
+#deskOverlay {
+  position: fixed;
+  top: 0;
+  right: var(--nav-width);   /* pegado a la barra */
+  width: 0;                  /* cerrado = no ocupa ancho */
+  height: 100vh;
+  background: #6471C0;
+  color: #E2E2FF;
+  transition: width .36s cubic-bezier(.2,.9,.2,1);
+  z-index: 12000;
+  overflow: hidden;          /* nada visible cuando está cerrado */
+  box-shadow: -20px 0 40px rgba(0,0,0,0.25);
+  display: block;            /* solo en desktop */
+}
+
+#deskOverlay.open {
+  width: 50%;                /* ancho al abrir */
+  max-width: 720px;
+  overflow-y: auto;          /* scroll interno */
+}
+
+#deskOverlay .desk-overlay-content {
+  padding: 1.5rem;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#deskOverlay .btn-close-desk {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #E2E2FF;
+  cursor: pointer;
+  z-index: 13000;
+}
+
+/* ocultar scrollbar visualmente */
+#deskOverlay .desk-overlay-content::-webkit-scrollbar { display:none; }
+#deskOverlay .desk-overlay-content { -ms-overflow-style:none; scrollbar-width:none; }
+
+/* secciones internas */
+.desk-section { display:none; }
+.desk-section.active { display:block; }
+
+  /* Ajustes hero para desktop */
+  .hero { padding-top: 1rem; padding-bottom: 1.5rem; }
+  .hero-img { max-height: 380px; }
+
+/* Acerca de sección Desk*/
+.acerca-imgs {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.acerca-imgs img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* IMAGENES TRABAJOS SECCIÓN*/
+#desk-trabajos  h2{
+  font-weight:100;
+  font-size: 50px;
+  margin-top: 10%;
+}
+.desk-trabajos{
+  gap: 2rem;
+  margin-top: 5%;
+}
+
+.desk-trabajos img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.desk-trabajos img:hover {
+  transform: scale(1.02);
+}
+
+.btn-MostrarDesk { 
+  width:150px; 
+  height:46px; 
+  border:2px solid 
+  #E2E2FF; 
+  background:transparent; 
+  color:#E2E2FF; 
+  font-size:18px; 
+  display:inline-flex; 
+  align-items:center; 
+  justify-content:center; 
+  border-radius:0; 
+  font-weight:300; 
+}
+
+/* SECCIÓN CONTACTAME */
+
+#desk-contacto{
+  margin-left: 5%;
+}
+
+#desk-contacto h2 {
+  font-weight: 100;
+  font-size: 50px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 5rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+.form-group.full {
+  width: 100%;
+}
+
+label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #E2E2FF;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E2E2FF;
+  padding-bottom: 0.25rem;
+}
+
+.input-line .arrow {
+  margin-right: 0.5rem;
+  color: #E2E2FF;
+  font-size: 18px;
+}
+
+/* Opciones del select en contacto (desktop) */
+#deskOverlay select option {
+  background: #E2E2FF;                  /* fondo cuadrado */
+  color: #6471C0;                       /* texto */
+  font-family: 'Poppins', sans-serif;   /* tipografía */
+  font-weight: 400;                     /* regular */
+  padding: 8px 12px;   
+  border-radius: 2px;
+  border: 0px;                 /* espacio interno */
+}
+
+/* Hover y seleccionada */
+#deskOverlay select option:hover,
+#deskOverlay select option:checked {
+  background: #919EF4;   /* un violeta intermedio, consistente con tu paleta */
+  color: #fff;           /* para que contraste bien */
+}
+
+
+.input-line input,
+.input-line select,
+.input-line textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #E2E2FF;
+}
+
+.input-line select {
+  appearance: none;
+}
+
+/* Contenedor especial para mensaje */
+.textarea-line {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border: none;
+  position: relative;
+  width:100%;
+}
+
+/* Textarea transparente con líneas de base */
+.textarea-line textarea {
+line-height: 2.2rem; /* separación de las líneas */
+  padding-top: 0.4rem; /* sube el texto para que coincida */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2.1rem,
+    #E2E2FF 2.1rem,
+    #E2E2FF 2.2rem
+  );
+  background-size: 100% 2.2rem; /* asegura repetición pareja */
+  border: none;
+  outline: none;
+  resize: none;
+  color: #E2E2FF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+/* botones */
+.btn-enviar { 
+   width:100%;
+   height:46px;
+   border:none;
+   background:#E2E2FF;
+   color:#6471C0;
+   font-size:16px;
+   font-family:'Poppins',sans-serif;
+   font-weight:300; 
+   cursor:pointer;
+ }
+
+/*SECCIPON HERO*/
+.hero h1 { 
+  color:#E2E2FF;
+  font-weight:100;
+  font-size:20px;
+  margin:0;
+  margin-top: 10%;
+  margin-bottom: 10%; 
+  margin-left: 10%;
+}
+
+}
+
+/* Media queries móviles: mostrar botón hamburguesa y overlay móvil cuando se abra vía JS */
+@media (max-width: 991px) {
+  .btn-menu { display:block; }
+  .nav-vertical { display:none !important; }
+  #deskOverlay { display:none !important; }
+}
+
+/* pequeños ajustes adicionales */
+.container, .container-fluid, .row { overflow: visible; }
