@@ -289,7 +289,7 @@
      CARDS Y CARRUSEL BRANDING (MOBILE)
      ====================== -->
 <!-- Branding -->
-<div id="brandingContent" class="carousel-content active">
+<div id="brandingContent" class="carousel-content d-none">
   <div id="carousel-branding" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <!-- Slide 1 -->
@@ -361,7 +361,7 @@
 </div>
 
 <!-- Tarjetas Interactivas -->
-<div id="tarjetasContent" class="carousel-content">
+<div id="tarjetasContent" class="carousel-content d-none">
   <div id="carousel-tarjetas" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -405,11 +405,13 @@
       </div>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-tarjetas" data-bs-slide="prev">
+     <button class="carousel-control-prev" type="button" data-bs-target="#carousel-tarjetas" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Anterior</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carousel-tarjetas" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Siguiente</span>
     </button>
   </div>
 </div>
@@ -584,69 +586,41 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-(function(){
-  document.addEventListener('DOMContentLoaded', function(){
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const section = params.get('section'); // e.g. "branding"
-      if (!section) return;
+// empieza
+document.addEventListener("DOMContentLoaded", function() {
+  // Captura el parámetro ?section= de la URL
+  const params = new URLSearchParams(window.location.search);
+  const section = params.get("section");
 
-      // Primero: ocultar todos los contenedores posibles que usás
-      document.querySelectorAll(
-        '.contenido-filtro, .tab-content, .carousel-content, [id$="Content"], #tarjetas, #brandingContent'
-      ).forEach(el=>{
-        el.classList.add('d-none');
-        el.classList.remove('active');
-      });
+  // Seleccionamos todas las secciones de carrusel
+  const sections = document.querySelectorAll(".carousel-content, .carousel-section");
 
-      // Intento encontrar el objetivo en varias formas:
-      let target =
-        document.getElementById(section + 'Content') ||
-        document.getElementById(section) ||
-        document.querySelector('#' + section + 'Content') ||
-        document.querySelector('#' + section);
+  // Ocultamos todas por defecto
+  sections.forEach(s => s.classList.add("d-none"));
 
-      if (target) {
-        target.classList.remove('d-none');
-        target.classList.add('active');
+  // Mostrar según el parámetro recibido
+  if (section === "branding") {
+    document.getElementById("brandingContent")?.classList.remove("d-none");
+  } else if (section === "tarjetas") {
+    document.getElementById("tarjetasContent")?.classList.remove("d-none");
+  } else {
+    // Si no hay parámetro, mostrar branding por defecto
+    document.getElementById("brandingContent")?.classList.remove("d-none");
+  }
 
-        // Si contiene un carousel de Bootstrap, forzar que tenga un .carousel-item.active válido
-        const carousel = target.querySelector('.carousel');
-        if (carousel) {
-          const items = carousel.querySelectorAll('.carousel-item');
-          if (items.length) {
-            items.forEach((it, i) => it.classList.toggle('active', i === 0));
-            // reiniciar el carousel (si es necesario)
-            // Si querés reiniciarlo con Bootstrap JS (opcional):
-            try {
-              // Bootstrap 5: reiniciar el componente (si está cargado)
-              const Carousel = bootstrap.Carousel;
-              if (Carousel) {
-                // destruyo y creo uno nuevo para evitar estados raros
-                const inst = Carousel.getInstance(carousel);
-                if (inst) inst.dispose();
-                new Carousel(carousel, { interval: false });
-              }
-            } catch(e){ /* si bootstrap no disponible, no problem */ }
-          }
-        }
-      } else {
-        // si no encontró, arroja mensaje para debugging
-        console.warn('No se encontró la sección solicitada:', section);
-      }
+  // Manejo de los botones de filtro dentro de trabajos.html
+  const filtroButtons = document.querySelectorAll(".filtro");
+  filtroButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filtroButtons.forEach(b => b.classList.remove("activo"));
+      btn.classList.add("activo");
 
-      // Marcar botón filtro como activo según data-target (soporta "brandingContent" o "branding")
-      document.querySelectorAll('.filter-btn').forEach(btn=>{
-        const targetName = btn.getAttribute('data-target') || btn.dataset.target || '';
-        const normalized = targetName.replace(/Content$/, '');
-        btn.classList.toggle('activo', normalized === section || targetName === (section + 'Content'));
-      });
-
-    } catch (err) {
-      console.error('Error procesando parametro "section":', err);
-    }
+      const target = btn.dataset.target;
+      sections.forEach(s => s.classList.add("d-none"));
+      document.getElementById(target)?.classList.remove("d-none");
+    });
   });
-})();
+});
 </script>
 
 </body>
