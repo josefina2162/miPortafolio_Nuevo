@@ -112,6 +112,10 @@ body {
 .contact-links { margin-top:1.5rem; display:flex; justify-content:center; gap:24px; }
 .contact-links a, .contact-links2 a { color:#E2E2FF; text-decoration:none; font-size:18px; font-weight:300; }
 
+a {
+    text-decoration: none;
+}
+
 /* ---------------------
    HERO
    --------------------- */
@@ -236,6 +240,31 @@ body {
   display: block;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent; /* aseguramos que no tenga fondo */
+  filter: none !important; /* quitamos el blanco forzado */
+  background-image: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  content: '←'; /* flecha izquierda */
+  color: #E2E2FF; /* ← color que vos quieras */
+  font-size: 2.3rem;
+  font-weight: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-control-next-icon::after {
+  content: '→'; /* flecha derecha */
+}
 /* 
 .carousel-item {
   display: flex;

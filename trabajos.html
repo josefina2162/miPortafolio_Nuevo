@@ -24,7 +24,8 @@
   <!-- Vista principal del menú -->
   <div class="menu-main" aria-hidden="false">
     <ul class="menu-list">
-      <li><button class="menu-link" data-section="acerca">Inicio</button></li>
+      <li><a href="index.html" class="menu-link">Inicio</a></li>
+      <li><button class="menu-link" data-section="acerca">Acerca de</button></li>
       <li><button class="menu-link" data-section="trabajos">Trabajos</button></li>
       <li><button class="menu-link" data-section="contacto">Contacto</button></li>
     </ul>
@@ -119,7 +120,8 @@
      ====================== -->
 <nav class="nav-vertical" aria-label="Navegación principal desktop">
   <ul>
-    <li><a href="#" data-section="acerca">Inicio</a></li>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="#" data-section="acerca">Acerca de</a></li>
     <li><a href="#" data-section="trabajos">Trabajos</a></li>
     <li><a href="#" data-section="contacto">Contacto</a></li>
   </ul>
@@ -290,7 +292,7 @@
      ====================== -->
 <!-- Branding -->
 <div id="brandingContent" class="carousel-content d-none">
-  <div id="carousel-branding" class="carousel slide" data-bs-ride="carousel">
+  <div id="carousel-branding" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
     <div class="carousel-inner">
       <!-- Slide 1 -->
       <div class="carousel-item active">
@@ -362,7 +364,7 @@
 
 <!-- Tarjetas Interactivas -->
 <div id="tarjetasContent" class="carousel-content d-none">
-  <div id="carousel-tarjetas" class="carousel slide" data-bs-ride="carousel">
+  <div id="carousel-tarjetas" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="card mx-auto" style="width: 18rem;">
@@ -421,26 +423,23 @@
 
 <!-- Script: mobile + desktop (reemplaza tu script actual por este) -->
 <script>
-/* ----------------- MOBILE ----------------- */
+/* ----------------- MENU MOBILE / DESKTOP (unificado) ----------------- */
 const overlay = document.getElementById('menuOverlay');
 const toggleBtn = document.querySelector('.btn-menu');
 
-// elementos internos del overlay mobile
 const menuMain = overlay ? overlay.querySelector('.menu-main') : null;
 const menuContent = overlay ? overlay.querySelector('.menu-content') : null;
 const menuBack = overlay ? overlay.querySelector('.menu-back') : null;
 const menuButtons = overlay ? overlay.querySelectorAll('.menu-link') : [];
-const sections = overlay ? overlay.querySelectorAll('.section-content') : [];
+const sectionsOverlay = overlay ? overlay.querySelectorAll('.section-content') : [];
 
-// abrir menú mobile
+/* Abrir / cerrar menú mobile */
 function openMenu() {
   if (!overlay) return;
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden','false');
   document.body.classList.add('menu-open');
 }
-
-// cerrar menú mobile (y reset)
 function closeMenu() {
   if (!overlay) return;
   overlay.classList.remove('open');
@@ -450,23 +449,23 @@ function closeMenu() {
   if (menuMain) menuMain.style.display = 'block';
   if (menuContent) menuContent.style.display = 'none';
   if (menuBack) menuBack.style.display = 'none';
-  sections.forEach(sec => sec.style.display = 'none');
+  sectionsOverlay.forEach(sec => sec.style.display = 'none');
 }
 
-// toggle hamburguesa
+/* Toggle hamburguesa */
 if (toggleBtn) toggleBtn.addEventListener('click', () => {
   if (!overlay) return;
   if (overlay.classList.contains('open')) closeMenu();
   else openMenu();
 });
 
-// botón cerrar mobile
+/* Cerrar botón dentro del overlay mobile */
 if (overlay) {
   const btnCloseMobile = overlay.querySelector('.btn-close');
   if (btnCloseMobile) btnCloseMobile.addEventListener('click', closeMenu);
 }
 
-// manejar links mobile (mostrar contenido dentro del overlay)
+/* Manejo de botones dentro del overlay mobile (Acerca / Trabajos / Contacto) */
 menuButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const sectionId = btn.dataset.section;
@@ -477,31 +476,31 @@ menuButtons.forEach(btn => {
     menuContent.style.display = 'block';
     menuBack.style.display = 'block';
 
-    sections.forEach(sec => sec.style.display = 'none');
+    sectionsOverlay.forEach(sec => sec.style.display = 'none');
     const target = overlay.querySelector('#' + sectionId);
     if (target) target.style.display = 'block';
   });
 });
 
-// botón volver
+/* Volver dentro del overlay mobile */
 if (menuBack) {
   menuBack.addEventListener('click', () => {
     if (!menuMain || !menuContent || !menuBack) return;
     menuMain.style.display = 'block';
     menuContent.style.display = 'none';
     menuBack.style.display = 'none';
-    sections.forEach(sec => sec.style.display = 'none');
+    sectionsOverlay.forEach(sec => sec.style.display = 'none');
   });
 }
 
-/* cerrar con ESC en mobile */
+/* Cerrar con ESC (Mobile) */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     if (overlay && overlay.classList.contains('open')) closeMenu();
   }
 });
 
-/* ----------------- DESKTOP ----------------- */
+/* ----------------- DESKTOP (nav vertical + overlay lateral) ----------------- */
 const deskOverlay = document.getElementById('deskOverlay');
 const deskLinks = document.querySelectorAll('.nav-vertical a');
 const deskSections = document.querySelectorAll('.desk-section');
@@ -509,23 +508,29 @@ const deskClose = deskOverlay ? deskOverlay.querySelector('.btn-close-desk') : n
 
 deskLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    e.preventDefault();
     const section = link.dataset.section;
-    if (!deskOverlay) return;
 
-    // abrir panel desktop
-    deskOverlay.classList.add('open');
-    deskOverlay.setAttribute('aria-hidden','false');
-    document.body.classList.add('menu-open'); // bloquea scroll del body
+    // Si el link tiene data-section, abrir overlay
+    if (section) {
+      e.preventDefault();
+      if (!deskOverlay) return;
 
-    // mostrar la sección correspondiente
-    deskSections.forEach(sec => sec.classList.remove('active'));
-    const target = document.getElementById('desk-' + section);
-    if (target) target.classList.add('active');
+      deskOverlay.classList.add('open');
+      deskOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menu-open');
+
+      // mostrar la sección correspondiente
+      deskSections.forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById('desk-' + section);
+      if (target) target.classList.add('active');
+    } 
+    // Si NO tiene data-section, dejar que el navegador siga el enlace (por ejemplo "Inicio")
+    else {
+      // No hacer nada: permite la navegación normal
+    }
   });
 });
 
-// cerrar overlay desktop
 if (deskClose) {
   deskClose.addEventListener('click', () => {
     deskOverlay.classList.remove('open');
@@ -535,7 +540,6 @@ if (deskClose) {
   });
 }
 
-// cerrar con ESC desktop
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && deskOverlay && deskOverlay.classList.contains('open')) {
     deskOverlay.classList.remove('open');
@@ -545,81 +549,92 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+/* ----------------- FILTROS + INICIALIZACIÓN DE CARRUSELES (UNIFICADO) ----------------- */
 document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.filter-btn');
-  const contents = document.querySelectorAll('.carousel-content');
+  const filterBtns = document.querySelectorAll('.filter-btn'); // botones superiores
+  const sectionsCar = document.querySelectorAll('.carousel-content, .carousel-section, .carousel-section'); // posibles clases
+  // Normalizamos lista de secciones (evitamos interferencias con otros scripts).
+  const sections = Array.from(sectionsCar);
 
-  function hideAll() {
-    contents.forEach(c => {
-      c.classList.remove('active');
-      c.style.display = 'none';
-      const inner = c.querySelector('.carousel');
+  // Función para ocultar todo y destruir instancias previas de Bootstrap Carousel
+  function hideAllSections() {
+    sections.forEach(s => {
+      s.classList.add('d-none');
+      s.classList.remove('active');
+      // quitamos inline display si existe (evitar que quede display:none)
+      s.style.display = '';
+      // destruir instancia previa si existiera
+      const inner = s.querySelector('.carousel');
       if (inner) {
-        const inst = bootstrap.Carousel.getInstance(inner);
-        if (inst) inst.pause();
+        try {
+          const inst = bootstrap.Carousel.getInstance(inner);
+          if (inst) inst.dispose();
+        } catch (e) { /* ignore */ }
       }
     });
-    buttons.forEach(b => b.classList.remove('active'));
+    filterBtns.forEach(b => b.classList.remove('active'));
   }
 
-  function showTarget(targetSelector, btn) {
-    const target = document.querySelector(targetSelector);
-    if (!target) return;
-    target.classList.add('active');
-    target.style.display = 'block';
-    btn.classList.add('active');
-    const inner = target.querySelector('.carousel');
-    if (inner) {
-      let inst = bootstrap.Carousel.getInstance(inner);
-      if (!inst) inst = new bootstrap.Carousel(inner, { interval: 4000, ride: false });
-      inst.cycle();
+  // Muestra una sección por ID, inicializa carousel dentro si existe
+  function showSectionById(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    hideAllSections();
+    el.classList.remove('d-none');
+    el.classList.add('active');
+    el.style.display = 'block';
+
+    const carousel = el.querySelector('.carousel');
+    if (carousel) {
+      // asegurar que exista exactamente un .carousel-item.active (primer elemento)
+      const items = carousel.querySelectorAll('.carousel-item');
+      if (items.length) {
+        items.forEach((it, i) => it.classList.toggle('active', i === 0));
+      }
+      // reiniciar / crear instancia del carousel
+      try {
+        const existing = bootstrap.Carousel.getInstance(carousel);
+        if (existing) existing.dispose();
+        // iniciamos sin autostart (ride false) para evitar comportamientos inesperados
+        new bootstrap.Carousel(carousel, { interval: 4000, ride: false });
+      } catch (e) {
+        console.warn('Bootstrap Carousel no disponible o fallo al init', e);
+      }
     }
+
+    // Marcar botón correspondiente como activo (busca data-target="#id")
+    filterBtns.forEach(b => {
+      const targetAttr = (b.getAttribute('data-target') || b.dataset.target || '').replace(/^#/, '');
+      b.classList.toggle('active', targetAttr === id);
+    });
   }
 
-  // listeners
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('active')) return;
-      hideAll();
-      showTarget(btn.dataset.target, btn);
+  // Click handlers de botones filtros
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const targetAttr = btn.getAttribute('data-target') || btn.dataset.target;
+      if (!targetAttr) return;
+      const id = targetAttr.replace(/^#/, '');
+      showSectionById(id);
     });
   });
-});
 
-// empieza
-document.addEventListener("DOMContentLoaded", function() {
-  // Captura el parámetro ?section= de la URL
+  // Manejo del param ?section= que viene desde index.html
   const params = new URLSearchParams(window.location.search);
-  const section = params.get("section");
-
-  // Seleccionamos todas las secciones de carrusel
-  const sections = document.querySelectorAll(".carousel-content, .carousel-section");
-
-  // Ocultamos todas por defecto
-  sections.forEach(s => s.classList.add("d-none"));
-
-  // Mostrar según el parámetro recibido
-  if (section === "branding") {
-    document.getElementById("brandingContent")?.classList.remove("d-none");
-  } else if (section === "tarjetas") {
-    document.getElementById("tarjetasContent")?.classList.remove("d-none");
+  let sectionParam = params.get('section'); // ej: "branding" o "tarjetas"
+  if (sectionParam) {
+    // normalizamos: "branding" -> "brandingContent" (si el id está en ese formato)
+    if (!sectionParam.endsWith('Content')) sectionParam = sectionParam + 'Content';
+    // si existe la seccion, mostrarla; si no, fallback a brandingContent
+    if (document.getElementById(sectionParam)) {
+      showSectionById(sectionParam);
+    } else {
+      showSectionById('brandingContent');
+    }
   } else {
-    // Si no hay parámetro, mostrar branding por defecto
-    document.getElementById("brandingContent")?.classList.remove("d-none");
+    // sin parametro: mostramos branding por defecto
+    showSectionById('brandingContent');
   }
-
-  // Manejo de los botones de filtro dentro de trabajos.html
-  const filtroButtons = document.querySelectorAll(".filtro");
-  filtroButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filtroButtons.forEach(b => b.classList.remove("activo"));
-      btn.classList.add("activo");
-
-      const target = btn.dataset.target;
-      sections.forEach(s => s.classList.add("d-none"));
-      document.getElementById(target)?.classList.remove("d-none");
-    });
-  });
 });
 </script>
 
