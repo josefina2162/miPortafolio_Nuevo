@@ -1,6 +1,6 @@
 <svg width="988" height="1117" viewBox="0 0 988 1117" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g filter="url(#filter0_n_773_2)">
-<rect width="894" height="1117" transform="matrix(-1 0 0 1 987 0)" fill="url(#paint0_radial_773_2)"/>
+<rect width="987" height="1117" transform="matrix(-1 0 0 1 987 0)" fill="url(#paint0_radial_773_2)"/>
 </g>
 <mask id="mask0_773_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="75" width="988" height="965">
 <ellipse cx="494" cy="557.26" rx="494" ry="482.26" fill="url(#paint1_radial_773_2)"/>
@@ -9,16 +9,16 @@
 <rect x="-1.80469" y="-213.995" width="990.032" height="1320.04" fill="url(#pattern0_773_2)"/>
 </g>
 <defs>
-<filter id="filter0_n_773_2" x="93" y="0" width="894" height="1117" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_n_773_2" x="0" y="0" width="987" height="1117" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="675" />
 <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
 <feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+<feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
 </feComponentTransfer>
 <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-<feFlood flood-color="rgba(19, 32, 96, 0.63)" result="color1Flood" />
+<feFlood flood-color="rgba(19, 32, 96, 0.4)" result="color1Flood" />
 <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
 <feMerge result="effect1_noise_773_2">
 <feMergeNode in="shape" />
@@ -28,7 +28,7 @@
 <pattern id="pattern0_773_2" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_773_2" transform="scale(0.000833333 0.000625)"/>
 </pattern>
-<radialGradient id="paint0_radial_773_2" cx="0" cy="0" r="1" gradientTransform="matrix(906.003 -1091.15 859.397 1995.3 0.000131956 1101)" gradientUnits="userSpaceOnUse">
+<radialGradient id="paint0_radial_773_2" cx="0" cy="0" r="1" gradientTransform="matrix(1000.25 -1091.15 948.797 1995.3 0.000145683 1101)" gradientUnits="userSpaceOnUse">
 <stop offset="0.125" stop-color="#919EF4"/>
 <stop offset="0.644231" stop-color="#3060AA"/>
 <stop offset="1" stop-color="#132060"/>
