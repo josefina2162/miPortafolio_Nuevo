@@ -185,75 +185,76 @@
     <button class="btn btn-MostrarDesk">Más</button>
   </div>
 </div>
-   <div id="desk-contacto" class="desk-section">
-  <h2>Contáctame</h2>
-  <form id="contactFormDesk" class="contact-form" action="https://formspree.io/f/mzzjkned" method="POST">
-    <!-- Fila 1: Nombre y Apellido -->
-    <div class="form-row">
-      <div class="form-group">
-        <label for="nombre">Nombre *</label>
-        <div class="input-line">
-          <span class="arrow">→</span>
-          <input type="text" id="nombre">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="apellido">Apellido *</label>
-        <div class="input-line">
-          <span class="arrow">→</span>
-          <input type="text" id="apellido">
-        </div>
-      </div>
-    </div>
+        <div id="desk-contacto" class="desk-section">
+          <h2>Contáctame</h2>
+          <form id="contactFormDesk" class="contact-form" action="https://formspree.io/f/mzzjkned" method="POST">
+            <!-- Fila 1: Nombre y Apellido -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nombre *</label>
+                <div class="input-line">
+                  <span class="arrow">→</span>
+                  <input  id="name" name="name" type="text" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastname">Apellido *</label>
+                <div class="input-line">
+                  <span class="arrow">→</span>
+                  <input id="lastname" name="lastname" type="text" required />
+                </div>
+              </div>
+            </div>
 
-    <!-- Fila 2: Email y Teléfono -->
-    <div class="form-row">
-      <div class="form-group">
-        <label for="email">Email *</label>
-        <div class="input-line">
-          <span class="arrow">→</span>
-          <input type="email" id="email">
+            <!-- Fila 2: Email y Teléfono -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <div class="input-line">
+                  <span class="arrow">→</span>
+                  <input id="email" name="email" type="email" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono *</label>
+                <div class="input-line">
+                  <span class="arrow">→</span>
+                  <input id="phone" name="phone" type="tel" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Fila 3: Servicio -->
+            <div class="form-group full">
+              <label for="service">Servicio *</label>
+              <div class="input-line">
+                <span class="arrow">→</span>
+                <select id="service" name="service" required>
+                  <option selected disabled>Seleccionar servicio</option>
+                  <option value="branding">Branding</option>
+                  <option value="uxui">UX/UI</option>
+                  <option value="content">Content Creator</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fila 4: Mensaje -->
+            <div class="form-group full">
+              <label for="message">Mensaje *</label>
+              <div class="input-line textarea-line">
+                <span class="arrow">→</span>
+                <textarea  id="message" name="message" rows="3" required ></textarea>
+
+              </div>
+            </div>
+
+            <!-- Botón -->
+            <div class="form-group full text-center">
+              <button type="submit" class="btn btn-enviar">Enviar</button>
+            </div>
+          </form>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="telefono">Teléfono *</label>
-        <div class="input-line">
-          <span class="arrow">→</span>
-          <input type="tel" id="telefono">
-        </div>
-      </div>
-    </div>
-
-    <!-- Fila 3: Servicio -->
-    <div class="form-group full">
-      <label for="servicio">Servicio *</label>
-      <div class="input-line">
-        <span class="arrow">→</span>
-        <select id="servicio">
-          <option selected disabled>Seleccionar servicio</option>
-          <option value="branding">Branding</option>
-          <option value="uxui">UX/UI</option>
-          <option value="content">Content Creator</option>
-          <option value="otros">Otros</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Fila 4: Mensaje -->
-<div class="form-group full">
-  <label for="mensaje">Mensaje *</label>
-  <div class="input-line textarea-line">
-    <span class="arrow">→</span>
-    <textarea id="mensaje" rows="3"></textarea>
-  </div>
-</div>
-
-    <!-- Botón -->
-    <div class="form-group full text-center">
-      <button type="submit" class="btn btn-enviar">Enviar</button>
-    </div>
-  </form>
-</div>
   </div>
 </div>
 
