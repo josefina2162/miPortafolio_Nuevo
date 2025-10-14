@@ -586,7 +586,23 @@ line-height: 2.2rem; /* separación de las líneas */
     margin-bottom: 2%;
 }
 
+/* links de contacto */
+.contact-links {
+        margin-top: 5%;
+        display: flex;
+        justify-content: left;
+        gap: 10%;
 }
+
+.contact-links a, .contact-links2 a { color:#E2E2FF; text-decoration:none; font-size:18px; font-weight:300; }
+
+}
+
+.contact-links2 {
+  margin-top: 2%;
+
+}
+
 
 /* Media queries móviles: mostrar botón hamburguesa y overlay móvil cuando se abra vía JS */
 @media (max-width: 991px) {
