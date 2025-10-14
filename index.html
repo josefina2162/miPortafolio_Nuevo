@@ -294,17 +294,17 @@
             <!-- Fila 1: Nombre y Apellido -->
             <div class="form-row">
               <div class="form-group">
-                <label for="nombre">Nombre *</label>
+                <label for="name">Nombre *</label>
                 <div class="input-line">
                   <span class="arrow">→</span>
-                  <input type="text" id="nombre" />
+                  <input  id="name" name="name" type="text" required />
                 </div>
               </div>
               <div class="form-group">
-                <label for="apellido">Apellido *</label>
+                <label for="lastname">Apellido *</label>
                 <div class="input-line">
                   <span class="arrow">→</span>
-                  <input type="text" id="apellido" />
+                  <input id="lastname" name="lastname" type="text" required />
                 </div>
               </div>
             </div>
@@ -315,24 +315,24 @@
                 <label for="email">Email *</label>
                 <div class="input-line">
                   <span class="arrow">→</span>
-                  <input type="email" id="email" />
+                  <input id="email" name="email" type="email" required />
                 </div>
               </div>
               <div class="form-group">
-                <label for="telefono">Teléfono *</label>
+                <label for="phone">Teléfono *</label>
                 <div class="input-line">
                   <span class="arrow">→</span>
-                  <input type="tel" id="telefono" />
+                  <input id="phone" name="phone" type="tel" required />
                 </div>
               </div>
             </div>
 
             <!-- Fila 3: Servicio -->
             <div class="form-group full">
-              <label for="servicio">Servicio *</label>
+              <label for="service">Servicio *</label>
               <div class="input-line">
                 <span class="arrow">→</span>
-                <select id="servicio">
+                <select id="service" name="service" required>
                   <option selected disabled>Seleccionar servicio</option>
                   <option value="branding">Branding</option>
                   <option value="uxui">UX/UI</option>
@@ -344,10 +344,11 @@
 
             <!-- Fila 4: Mensaje -->
             <div class="form-group full">
-              <label for="mensaje">Mensaje *</label>
+              <label for="message">Mensaje *</label>
               <div class="input-line textarea-line">
                 <span class="arrow">→</span>
-                <textarea id="mensaje" rows="3"></textarea>
+                <textarea  id="message" name="message" rows="3" required ></textarea>
+
               </div>
             </div>
 
